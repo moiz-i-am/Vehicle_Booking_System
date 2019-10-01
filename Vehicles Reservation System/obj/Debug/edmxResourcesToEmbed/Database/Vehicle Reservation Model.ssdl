@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VehResModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ADMIN_UNAME" />
+    </Key>
+    <Property Name="ADMIN_UNAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ADMIN_PWORD" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ADMIN_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="BOOKING__ID" />
+    </Key>
+    <Property Name="BOOKING__ID" Type="int" Nullable="false" />
+    <Property Name="CUSTOMER_ID" Type="int" Nullable="false" />
+    <Property Name="CAR_ID" Type="int" Nullable="false" />
+    <Property Name="BOOKING_DATE" Type="date" Nullable="false" />
+    <Property Name="AMOUNT_DUE" Type="float" Nullable="false" />
+    <Property Name="RETURN_DATE" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CAR_ID" />
+    </Key>
+    <Property Name="CAR_ID" Type="int" Nullable="false" />
+    <Property Name="CAR_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CATEGORY" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="COLOR" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MFG_DATE" Type="text" Nullable="false" />
+    <Property Name="INSURANCE_NO" Type="float" Nullable="false" />
+    <Property Name="REG_NO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RATE_PER_DAY" Type="float" Nullable="false" />
+    <Property Name="STATUS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DATE_OF_INCLUSION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LICENSE_NO" Type="int" Nullable="false" />
+    <Property Name="CNIC" Type="float" Nullable="false" />
+    <Property Name="PHONE" Type="float" Nullable="false" />
+    <Property Name="DOB" Type="text" Nullable="false" />
+    <Property Name="ADDRESS" Type="text" Nullable="false" />
+    <Property Name="DATE_OF_REG" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntryOperator">
+    <Key>
+      <PropertyRef Name="UNAME" />
+    </Key>
+    <Property Name="UNAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PWORD" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ENTRYOP_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="MANAGER_UNAME" />
+    </Key>
+    <Property Name="MANAGER_UNAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MANAGER_PWORD" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="MANAGER_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Booking_ToCar">
+    <End Role="Car" Type="Self.Car" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="CAR_ID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="CAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_ToCustomer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="CUSTOMER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VehResModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntryOperator" EntityType="Self.EntryOperator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Booking_ToCar" Association="Self.FK_Booking_ToCar">
+      <End Role="Car" EntitySet="Car" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_ToCustomer" Association="Self.FK_Booking_ToCustomer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

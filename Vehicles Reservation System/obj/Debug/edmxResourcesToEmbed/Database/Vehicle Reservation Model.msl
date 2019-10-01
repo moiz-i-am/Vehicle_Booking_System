@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VehResModelStoreContainer" CdmEntityContainer="Vehicle_Reervation_DatabaseEntities">
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="VehResModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="BOOKING__ID" ColumnName="BOOKING__ID" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+          <ScalarProperty Name="BOOKING_DATE" ColumnName="BOOKING_DATE" />
+          <ScalarProperty Name="AMOUNT_DUE" ColumnName="AMOUNT_DUE" />
+          <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="VehResModel.Car">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="DATE_OF_INCLUSION" ColumnName="DATE_OF_INCLUSION" />
+          <ScalarProperty Name="RATE_PER_DAY" ColumnName="RATE_PER_DAY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+          <ScalarProperty Name="CAR_NAME" ColumnName="CAR_NAME" />
+          <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+          <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+          <ScalarProperty Name="MFG_DATE" ColumnName="MFG_DATE" />
+          <ScalarProperty Name="INSURANCE_NO" ColumnName="INSURANCE_NO" />
+          <ScalarProperty Name="REG_NO" ColumnName="REG_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="VehResModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="DATE_OF_REG" ColumnName="DATE_OF_REG" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="LICENSE_NO" ColumnName="LICENSE_NO" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntryOperators">
+      <EntityTypeMapping TypeName="VehResModel.EntryOperator">
+        <MappingFragment StoreEntitySet="EntryOperator">
+          <ScalarProperty Name="ENTRYOP_NAME" ColumnName="ENTRYOP_NAME" />
+          <ScalarProperty Name="UNAME" ColumnName="UNAME" />
+          <ScalarProperty Name="PWORD" ColumnName="PWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="VehResModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="ADMIN_NAME" ColumnName="ADMIN_NAME" />
+          <ScalarProperty Name="ADMIN_PWORD" ColumnName="ADMIN_PWORD" />
+          <ScalarProperty Name="ADMIN_UNAME" ColumnName="ADMIN_UNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="VehResModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="MANAGER_NAME" ColumnName="MANAGER_NAME" />
+          <ScalarProperty Name="MANAGER_PWORD" ColumnName="MANAGER_PWORD" />
+          <ScalarProperty Name="MANAGER_UNAME" ColumnName="MANAGER_UNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
